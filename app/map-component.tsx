@@ -80,7 +80,7 @@ function MapController({
   // Check if Leaflet Routing Machine is loaded
   useEffect(() => {
     // Check if L.Routing exists
-    if (typeof (L as any).Routing !== "undefined") {
+    if (typeof (L as any)?.Routing !== "undefined") {
       setRoutingMachineLoaded(true);
     } else {
       // If not loaded, dynamically load the script
@@ -211,7 +211,7 @@ export default function MapComponent({
   }, [isAddingMosque]);
 
   return (
-    <div className="flex-1 h-[50vh] md:h-auto">
+    <div className="flex-1 h-[50vh] md:h-auto z-20 hidden ">
       <MapContainer
         center={mapCenter}
         zoom={13}

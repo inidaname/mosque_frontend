@@ -1,13 +1,14 @@
+import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
+import { Providers } from "@/providers";
+// import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Eid Prayer Locations Map",
   description: "Find Eid prayer locations in FCT Abuja and get directions",
-  generator: "v0.dev",
 };
 
 export default function RootLayout({
@@ -36,9 +37,7 @@ export default function RootLayout({
         ></script>
       </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

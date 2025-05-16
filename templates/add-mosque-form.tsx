@@ -1,32 +1,81 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { DialogFooter } from "@/components/ui/dialog"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
+import { SetStateAction, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { DialogFooter } from "@/components/ui/dialog";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { useCreateMosqueMutation } from "@/service/endpoints/mosque-endpoints";
+import { toast } from "@/components/ui/use-toast";
 
 // Form schema for adding new mosque
 const addMosqueSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
-  address: z.string().min(5, { message: "Address must be at least 5 characters" }),
-  eidTime: z.string().min(5, { message: "Please enter a valid time (e.g., 09:00am)" }),
-  jummahTime: z.string().min(5, { message: "Please enter a valid time (e.g., 01:30pm)" }),
+  address: z
+    .string()
+    .min(5, { message: "Address must be at least 5 characters" }),
+  eidTime: z
+    .string()
+    .min(5, { message: "Please enter a valid time (e.g., 09:00am)" }),
+  jummahTime: z
+    .string()
+    .min(5, { message: "Please enter a valid time (e.g., 01:30pm)" }),
   lat: z.number().min(-90).max(90),
   lng: z.number().min(-180).max(180),
-})
+});
 
-export type AddMosqueFormValues = z.infer<typeof addMosqueSchema>
+export type AddMosqueFormValues = z.infer<typeof addMosqueSchema>;
 
 interface AddMosqueFormProps {
-  onSubmit: (values: AddMosqueFormValues) => void
-  mapClickLocation: { lat: number; lng: number } | null
+  // onSubmit: (values: AddMosqueFormValues) => void
+  setMosqueData: (value: SetStateAction<MosqueType[]>) => void;
+  setIsAddingMosque: (value: SetStateAction<boolean>) => void;
+  setMapClickLocation: (value: SetStateAction<null>) => void;
+  mapClickLocation: { lat: number; lng: number } | null;
+  mosqueData: MosqueType[];
 }
 
-export function AddMosqueForm({ onSubmit, mapClickLocation }: AddMosqueFormProps) {
+export function AddMosqueForm({
+  mapClickLocation,
+  setIsAddingMosque,
+  setMapClickLocation,
+  setMosqueData,
+  mosqueData,
+}: AddMosqueFormProps) {
+  const [addMosque, { data, isLoading }] = useCreateMosqueMutation();
+  // Handle form submission for adding new mosque
+  const handleAddMosque = async (data: AddMosqueFormValues) => {
+    const newMosque = {
+      id: Date.now(), // Use timestamp as ID
+      ...data,
+    };
+
+    setMosqueData([...mosqueData, newMosque]);
+    setIsAddingMosque(false);
+    setMapClickLocation(null);
+    const { jummahTime, eidTime, ...rest } = data;
+    await addMosque({
+      eid_time: eidTime,
+      jummah_time: jummahTime,
+      ...rest,
+    }).unwrap();
+    toast({
+      title: "Mosque added",
+      description: `${newMosque.name} has been added to the map.`,
+    });
+  };
+
   const form = useForm<AddMosqueFormValues>({
     resolver: zodResolver(addMosqueSchema),
     defaultValues: {
@@ -37,19 +86,19 @@ export function AddMosqueForm({ onSubmit, mapClickLocation }: AddMosqueFormProps
       lat: 9.0765,
       lng: 7.4894,
     },
-  })
+  });
 
   // Update form values when map click location changes
   useState(() => {
     if (mapClickLocation) {
-      form.setValue("lat", mapClickLocation.lat)
-      form.setValue("lng", mapClickLocation.lng)
+      form.setValue("lat", mapClickLocation.lat);
+      form.setValue("lng", mapClickLocation.lng);
     }
-  })
+  });
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(handleAddMosque)} className="space-y-4">
         <FormField
           control={form.control}
           name="name"
@@ -120,7 +169,9 @@ export function AddMosqueForm({ onSubmit, mapClickLocation }: AddMosqueFormProps
                     type="number"
                     step="0.0001"
                     {...field}
-                    onChange={(e) => field.onChange(Number.parseFloat(e.target.value))}
+                    onChange={(e) =>
+                      field.onChange(Number.parseFloat(e.target.value))
+                    }
                     value={field.value}
                   />
                 </FormControl>
@@ -140,7 +191,9 @@ export function AddMosqueForm({ onSubmit, mapClickLocation }: AddMosqueFormProps
                     type="number"
                     step="0.0001"
                     {...field}
-                    onChange={(e) => field.onChange(Number.parseFloat(e.target.value))}
+                    onChange={(e) =>
+                      field.onChange(Number.parseFloat(e.target.value))
+                    }
                     value={field.value}
                   />
                 </FormControl>
@@ -150,12 +203,14 @@ export function AddMosqueForm({ onSubmit, mapClickLocation }: AddMosqueFormProps
           />
         </div>
 
-        <FormDescription>Click on the map to set the location or enter coordinates manually.</FormDescription>
+        <FormDescription>
+          Click on the map to set the location or enter coordinates manually.
+        </FormDescription>
 
         <DialogFooter>
           <Button type="submit">Add Mosque</Button>
         </DialogFooter>
       </form>
     </Form>
-  )
+  );
 }
