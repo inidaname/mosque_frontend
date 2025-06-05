@@ -787,7 +787,7 @@ export default function MapClient() {
               defaultValue="jumma"
               value={prayerType}
               onValueChange={setPrayerType}
-              className="mb-4"
+              className="mb-4 hidden"
             >
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="eid">Eid Prayers</TabsTrigger>
