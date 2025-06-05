@@ -141,7 +141,7 @@ const MosqueList: React.FC<Props> = ({
               <Button
                 size="icon"
                 variant="ghost"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 h-6 w-6"
+                className="absolute hidden right-2 top-1/2 transform -translate-y-1/2 h-6 w-6"
                 onClick={(e) => {
                   e.stopPropagation();
                   startEditingTime(location);

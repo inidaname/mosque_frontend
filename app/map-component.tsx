@@ -211,7 +211,7 @@ export default function MapComponent({
   }, [isAddingMosque]);
 
   return (
-    <div className="flex-1 h-[50vh] md:h-auto z-20 hidden ">
+    <div className="flex-1 h-[50vh] md:h-auto z-20">
       <MapContainer
         center={mapCenter}
         zoom={13}

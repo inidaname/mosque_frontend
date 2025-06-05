@@ -71,7 +71,7 @@ const initialMosqueData: MosqueType[] = [
     id: 2,
     name: "AN-NOOR",
     address: "Al- Noor Masjid. Wuse 2 Abuja.",
-    eidTime: "08:30am",
+    eidTime: "08:00am",
     jummahTime: "01:30pm",
     lat: 9.0784,
     lng: 7.4753,
@@ -79,8 +79,8 @@ const initialMosqueData: MosqueType[] = [
   {
     id: 3,
     name: "APO LEGISLATIVE",
-    address: "APO Legislative Quarters Mosque, Zone E.",
-    eidTime: "09:00am",
+    address: "Central Mosque, APO Legislative Quarters, Zone E.",
+    eidTime: "08:30am",
     jummahTime: "01:30pm",
     lat: 9.0292,
     lng: 7.4893,
@@ -89,7 +89,7 @@ const initialMosqueData: MosqueType[] = [
     id: 4,
     name: "JIBWIS HEADQUARTERS",
     address: "Utako Berger, Abuja",
-    eidTime: "09:30am",
+    eidTime: "08:30am", // Assuming time based on similar locations
     jummahTime: "01:30pm",
     lat: 9.0741,
     lng: 7.4452,
@@ -98,7 +98,7 @@ const initialMosqueData: MosqueType[] = [
     id: 5,
     name: "GWARIMPA",
     address: "Gwarimpa Eid Ground",
-    eidTime: "09:00am",
+    eidTime: "08:30am",
     jummahTime: "01:30pm",
     lat: 9.1167,
     lng: 7.4167,
@@ -108,7 +108,7 @@ const initialMosqueData: MosqueType[] = [
     name: "NURUL YAQEEN",
     address:
       "Nurul Yaqeen Mosque, Plot 268, Kafe, Life Camp, Opp. Godab Estate.",
-    eidTime: "09:30am",
+    eidTime: "09:00am",
     jummahTime: "01:30pm",
     lat: 9.0941,
     lng: 7.4059,
@@ -118,7 +118,7 @@ const initialMosqueData: MosqueType[] = [
     name: "DUTSE BAUMPA",
     address:
       "By Shafa Energy, Tipper Garage Bmuko Junction, along Dutse - Bwari Road.",
-    eidTime: "09:30am",
+    eidTime: "09:00am",
     jummahTime: "01:30pm",
     lat: 9.1528,
     lng: 7.3444,
@@ -126,8 +126,8 @@ const initialMosqueData: MosqueType[] = [
   {
     id: 8,
     name: "ANSAR-UD-DEEN",
-    address: "Ansar-ud-deen Mosque No 80 Agaiyi Ironsi Street Wuse 2.",
-    eidTime: "10:00am",
+    address: "Ansar-ud-deen Mosque No 80 Aguiyi Ironsi Street Wuse 2.",
+    eidTime: "08:30am", // Assuming time based on similar locations
     jummahTime: "01:30pm",
     lat: 9.0784,
     lng: 7.4753,
@@ -144,30 +144,412 @@ const initialMosqueData: MosqueType[] = [
   },
   {
     id: 10,
+    name: "Al-HABIBIYYAH MOSQUE",
+    address:
+      "Al-habibiyyah Mosque, Plot 753, Babagana Kingibe Street Guzape, Abuja.",
+    eidTime: "09:00am",
+    jummahTime: "01:30pm",
+    lat: 9.0437,
+    lng: 7.5048,
+  },
+  {
+    id: 11,
+    name: "BANEX PLAZA",
+    address: "Uthman Bin Affan Mosque, (Banex Plaza), Wuse 2.",
+    eidTime: "08:00am",
+    jummahTime: "01:30pm",
+    lat: 9.0784,
+    lng: 7.4753,
+  },
+  {
+    id: 12,
     name: "CITEC EID GROUND",
     address: "Citec Estate, along Idu-Junction, Mbora Distric, Abuja.",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 13,
+    name: "Al-HUDA MASJID",
+    address:
+      "Al-Huda Masjid Premises, Uwadia Resorts of Millionaires Quarters, Byazhin-Kubwa.",
+    eidTime: "09:00am",
+    jummahTime: "01:30pm",
+    lat: 9.1667,
+    lng: 7.3333,
+  },
+  {
+    id: 14,
+    name: "AL-IKHLAS MASJID",
+    address: "FCDA Owner Occupier Estate, Kubwa, Abuja.",
+    eidTime: "09:00am",
+    jummahTime: "01:30pm",
+    lat: 9.1667,
+    lng: 7.3333,
+  },
+  {
+    id: 15,
+    name: "OLD BERGER",
+    address: "Old Berger Yard, Airport Road, Lugbe, Abuja",
+    eidTime: "08:15am",
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 16,
+    name: "AIRPORT MASJID",
+    address: "Praying Ground, AREA B, Airport Masjid.",
+    eidTime: "08:30am",
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 17,
+    name: "MASJID ABUBAKAR SIDDIQUE",
+    address: "Masjid Abubakar Siddique, Wuse Zone 6, Abuja.",
+    eidTime: "08:45am",
+    jummahTime: "01:30pm",
+    lat: 9.0784,
+    lng: 7.4753,
+  },
+  {
+    id: 18,
+    name: "JEDO ESTATE",
+    address: "Jumma'ah Masjid, Jedo Estate, Along Airport Road Abuja.",
+    eidTime: "08:00am",
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 19,
+    name: "ZUMA BARRACKS",
+    address:
+      "Ibn Abbas Masjid, Besides Zuma Barracks, Along Abuja-Kaduna Expressway, Suleja.",
+    eidTime: "08:00am",
+    jummahTime: "01:30pm",
+    lat: 9.1833,
+    lng: 7.1833,
+  },
+  {
+    id: 20,
+    name: "FOMWAN",
+    address: "Fomwan Headquarters Central Mosque, Utako",
+    eidTime: "08:45am",
+    jummahTime: "01:30pm",
+    lat: 9.0741,
+    lng: 7.4452,
+  },
+  {
+    id: 21,
+    name: "MUSLIM COMMUNITY KUBWA",
+    address: "Muslim Community Central Mosque, Shelter Farm Kubwa.",
+    eidTime: "09:00am",
+    jummahTime: "01:30pm",
+    lat: 9.1667,
+    lng: 7.3333,
+  },
+  {
+    id: 22,
+    name: "DAMBATTA MASJID",
+    address: "Dambatta masjid, No23 Kaltungo street Garki II.",
+    eidTime: "08:00am",
+    jummahTime: "01:30pm",
+    lat: 9.0333,
+    lng: 7.4833,
+  },
+  {
+    id: 23,
+    name: "AMSSCO ESTATE",
+    address: "Anas Ibn Malik Islamic Centre, AMSSCO Estate, Galadimawa, Abuja.",
+    eidTime: "08:00am",
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 24,
+    name: "KUBWA MUSLIM COMMUNITY",
+    address: "Kubwa Muslim Community Eid Ground, Phase 3 Junction, Kubwa.",
+    eidTime: "08:30am",
+    jummahTime: "01:30pm",
+    lat: 9.1667,
+    lng: 7.3333,
+  },
+  {
+    id: 25,
+    name: "JIBWIS ISLAMIC CENTER",
+    address: "Adamu Alieru Crescent, Guzape, Abuja.",
+    eidTime: "08:00am",
+    jummahTime: "01:30pm",
+    lat: 9.0437,
+    lng: 7.5048,
+  },
+  {
+    id: 26,
+    name: "JIBWIS FCT",
+    address: "DAWAKI Extension, News Engineering",
+    eidTime: "08:00am",
+    jummahTime: "01:30pm",
+    lat: 9.1167,
+    lng: 7.4167,
+  },
+  {
+    id: 27,
+    name: "CHIKA JUMA'AT MOSQUE",
+    address:
+      "Chika juma'at Mosque Muslims Initiative, Along Airport Road, Abuja.",
     eidTime: "09:00am",
     jummahTime: "01:30pm",
     lat: 9.0765,
     lng: 7.3986,
   },
   {
-    id: 11,
-    name: "Karu Mosque",
-    lat: 9.092195,
-    lng: 6.01759,
-    address: "Citec Estate, along Idu-Junction, Mbora Distric, Abuja.",
-    eidTime: "09:00am",
+    id: 28,
+    name: "AREA 8 MASJID",
+    address: "Area 8 Masjid section 1, Sheda Close Garki Abuja.",
+    eidTime: "08:30am",
     jummahTime: "01:30pm",
+    lat: 9.0333,
+    lng: 7.4833,
   },
   {
-    id: 12,
-    name: "Kuje Mosque",
-    lat: 9.092195,
-    lng: 6.01759,
-    address: "Citec Estate, along Idu-Junction, Mbora Distric, Abuja.",
+    id: 29,
+    name: "SUNNYVALE HOMES MASJID",
+    address:
+      "Sunnyvale Homes Sports Complex (near old gate), Dakwo District, Abuja.",
     eidTime: "09:00am",
     jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 30,
+    name: "MAMBILLA BARRACKS",
+    address:
+      "Guards Brigade Garrison Parade Ground, Mambilla Barracks, Asokoro.",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0437,
+    lng: 7.5048,
+  },
+  {
+    id: 31,
+    name: "ABACHA BARRACKS",
+    address: "Mugadishu Cantonment, Abacha Barracks (Parade ground).",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 32,
+    name: "OTM MASJID",
+    address: "OTM Masjid, Promenade/Kwankwaso Estate Lokogoma, Cluster 5",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 33,
+    name: "NATIONAL ASSEMBLY",
+    address: "National Assembly Central Mosque",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0579,
+    lng: 7.4951,
+  },
+  {
+    id: 34,
+    name: "WUYE CENTRAL MASJID",
+    address: "Wuye Central Masjid, Wuye District, FCT Abuja",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 35,
+    name: "JIBWIS GBAZANGO KUBWA",
+    address:
+      "JIBWIS Prayer Ground @ NYSC Junction by the Express, Gbazango, Kubwa, Abuja",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.1667,
+    lng: 7.3333,
+  },
+  {
+    id: 36,
+    name: "PEGI MUSLIM COMMUNITY",
+    address: "Pegi Muslim Community, Pegi Kuje. Eid Praying Ground.",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 37,
+    name: "CYCLIC ENERGY LTD",
+    address: "Cyclic Airport Road",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 38,
+    name: "ESTEEM BOYS' COLLEGE",
+    address: "Esteem Boys' College, Lokogoma",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 39,
+    name: "ANSAR-DEEN",
+    address: "Ansar-Deen Gwarimpa Mosque",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.1167,
+    lng: 7.4167,
+  },
+  {
+    id: 40,
+    name: "GWARIMPA MSS MASJID",
+    address: "Abdullateef Adegbite Jumua Masjid (MSS), 1st Avenue, Gwarimpa",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.1167,
+    lng: 7.4167,
+  },
+  {
+    id: 41,
+    name: "KUDURU MUSLIM COMMUNITY",
+    address:
+      "KMC, Kuduru Muslim Community at GSS Kuduru Premises, Bwari - Abuja.",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.2833,
+    lng: 7.3833,
+  },
+  {
+    id: 42,
+    name: "ANOOR ISLAMIC CENTRE MASJID",
+    address:
+      "Anoor Islamic Centre Masjid/Crescent Pearls Leadership Academy CPLA, Plot 107, Cadastral C20. Behind Nizamiye Turkish Hospital Mbora District, Abuja.",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 43,
+    name: "FEDERAL HOUSING AUTHORITY MOSQUE",
+    address: "Federal housing authority Mosque Asokoro, Abuja.",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0437,
+    lng: 7.5048,
+  },
+  {
+    id: 44,
+    name: "ANSAR-UD-DEEN KUBWA",
+    address:
+      "Ansar-ud-Deen Central Mosque, at Off Arab Road by Mango tree, Kubwa Abuja.",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.1667,
+    lng: 7.3333,
+  },
+  {
+    id: 45,
+    name: "SUNCITY ESTATE",
+    address: "Suncity Estate Juma'at Masjeed",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0765,
+    lng: 7.3986,
+  },
+  {
+    id: 46,
+    name: "MAITAMA CENTRAL MOSQUE",
+    address: "Maitama Central Mosque. No 120 Nile Street.",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0824,
+    lng: 7.4959,
+  },
+  {
+    id: 47,
+    name: "NASFAT ISLAMIC CENTRE",
+    address:
+      "NASFAT Islamic Centre, plot 313 Augustus Alkhomu Way, UTAKO District, Abuja",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0741,
+    lng: 7.4452,
+  },
+  {
+    id: 48,
+    name: "KUBWA",
+    address: "FO1 Eid Ground, Kubwa",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.1667,
+    lng: 7.3333,
+  },
+  {
+    id: 49,
+    name: "AYA CENTRAL MOSQUE",
+    address: "A Y A Asokoro Central mosque",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0437,
+    lng: 7.5048,
+  },
+  {
+    id: 50,
+    name: "BMUKO MUSLIM COMMUNITY",
+    address:
+      "Bmuko Muslim Community, Off Tipper Garage, Dutse, off Bwari Expressway, Abuja.",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.1528,
+    lng: 7.3444,
+  },
+  {
+    id: 51,
+    name: "SHEHU SHAGARI CENTRAL MOSQUE",
+    address: "Mosque premises, Section 2, Area 1, Garki Abuja.",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0333,
+    lng: 7.4833,
+  },
+  {
+    id: 52,
+    name: "ANWARU -L-HUDA",
+    address:
+      "Anwaru -L-Huda League of Nigeria (AHLON), Area 1, Section 1, Garki, Abuja.",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0333,
+    lng: 7.4833,
+  },
+  {
+    id: 53,
+    name: "SUNUSI DANTATA",
+    address: "Sunusi Dantata Juma'at Mosque Central Area",
+    eidTime: "08:30am", // Assuming time based on similar locations
+    jummahTime: "01:30pm",
+    lat: 9.0579,
+    lng: 7.4951,
   },
 ];
 
