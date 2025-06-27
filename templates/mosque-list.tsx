@@ -32,7 +32,7 @@ const MosqueList: React.FC<Props> = ({
   console.log("data", data);
   // State for editing mosque time
   const [editingMosque, setEditingMosque] = useState<MosqueType | null>(null);
-  const [editedTime, setEditedTime] = useState("");
+  const [editedTime, setEditedTime] = useState("jumma");
   // Handle time editing
   const startEditingTime = (mosque: MosqueType) => {
     setEditingMosque(mosque);
