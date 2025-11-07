@@ -583,7 +583,7 @@ export default function MapClient() {
   const [mosqueData, setMosqueData] = useState<MosqueType[]>([]);
 
   // State for prayer type (eid or jummah)
-  const [prayerType, setPrayerType] = useState<PrayerType | string>("eid");
+  const [prayerType, setPrayerType] = useState<PrayerType | string>("jummah");
 
   // Other state variables
   const [searchTerm, setSearchTerm] = useState("");
